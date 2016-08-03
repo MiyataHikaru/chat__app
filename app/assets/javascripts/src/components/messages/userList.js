@@ -45,7 +45,10 @@ class UserList extends React.Component {
   }
   changeOpenChat(id) {
     MessagesAction.changeOpenChat(id)
+    MessagesAction.loadMessage(id)
   }
+  // loadMessage() {
+  // }
   render() {
     this.state.messageList.sort((a, b) => {
       if (a.lastMessage.timestamp > b.lastMessage.timestamp) {
@@ -57,7 +60,7 @@ class UserList extends React.Component {
       return 0
     })
 
-    const messages = this.state.messageList.map((message, index) => {
+    const messages = this.state.messageList.map((message) => {
       const date = Utils.getNiceDate(message.lastMessage.timestamp)
 
       var statusIcon
@@ -86,7 +89,7 @@ class UserList extends React.Component {
 
       return (
         <li
-          onClick={ this.changeOpenChat.bind(this, message.user.id)}
+          onClick={ this.changeOpenChat.bind(this, message.user.id) }
           className={ itemClasses }
           key={ message.user.id }
         >

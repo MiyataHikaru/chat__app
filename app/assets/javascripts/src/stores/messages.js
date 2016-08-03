@@ -68,7 +68,8 @@ const messages = {
   },
 }
 
-var openChatID = parseInt(Object.keys(messages)[0], 10)
+let openChatID = parseInt(Object.keys(messages)[0], 10)
+let json = []
 
 class ChatStore extends BaseStore {
   addChangeListener(callback) {
@@ -86,6 +87,9 @@ class ChatStore extends BaseStore {
   }
   getAllChats() {
     return messages
+  }
+  getJson() {
+    return { messages: json }
   }
 }
 const MessagesStore = new ChatStore()
@@ -106,6 +110,11 @@ MessagesStore.dispatchToken = Dispatcher.register(payload => {
         from: UserStore.user.id,
       })
       messages[userID].lastAccess.currentUser = +new Date()
+      MessagesStore.emitChange()
+    },
+
+    loadMessage(payload) {
+      json = payload.action.json
       MessagesStore.emitChange()
     },
   }
