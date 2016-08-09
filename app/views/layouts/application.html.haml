@@ -2,10 +2,41 @@
 %html
   %head
     %title flux_tutorial
+    = stylesheet_link_tag '//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css'
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
-    %link{ href: '//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css', rel: 'stylesheet' }/
+    = stylesheet_link_tag '//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css'
     = javascript_include_tag 'application'
     = javascript_include_tag '/assets/javascripts/boot.js'
     = csrf_meta_tags
   %body
+    %header
+      .header-left
+        = link_to "Chatapp.", root_path
+      .header-right
+        %ul
+          -if user_signed_in?
+            %li<
+              = link_to root_path do
+                %span.fa.fa-home>
+                ホーム
+            %li<
+              = link_to users_path do
+                %span.fa.fa-search>
+                ユーザー検索
+            %li<
+              = link_to destroy_user_session_path, method: :delete do
+                %span.fa.fa-sign-out>
+                ログアウト
+            %li<
+              = link_to image_tag('huku.jpg'), current_user, class: 'image-link'
+
+          -else
+            %li<
+              = link_to new_user_registration_path do
+                %span.fa.fa-tag>
+                新規登録
+            %li<
+              = link_to new_user_session_path do
+                %span.fa.fa-sign-in>
+                ログイン
     = yield

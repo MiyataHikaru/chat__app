@@ -4,13 +4,14 @@
   left: 0;
   bottom: 0;
   width: 300px;
-  background: rgba( 0, 0, 0, 0.03 );
+  background: rgba( 0, 0, 0, 0.5 );
   border-right: 1px solid rgba( 0, 0, 0, 0.1 );
 
   &__item {
     padding: 14px 10px 14px 15px;
     border-bottom: 1px solid rgba( 0, 0, 0, 0.1 );
     cursor: pointer;
+    background-color: white;
 
     &--new {
       background: #EEF1F6;

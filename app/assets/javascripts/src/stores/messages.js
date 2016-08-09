@@ -102,19 +102,23 @@ MessagesStore.dispatchToken = Dispatcher.register(payload => {
       MessagesStore.emitChange()
     },
 
-    sendMessage(payload) {
-      const userID = payload.action.userID
-      messages[userID].messages.push({
-        contents: payload.action.message,
-        timestamp: payload.action.timestamp,
-        from: UserStore.user.id,
-      })
-      messages[userID].lastAccess.currentUser = +new Date()
-      MessagesStore.emitChange()
-    },
+    // sendMessage(payload) {
+    //   const userID = payload.action.userID
+    //   messages[userID].messages.push({
+    //     contents: payload.action.message,
+    //     timestamp: payload.action.timestamp,
+    //     from: UserStore.user.id,
+    //   })
+    //   messages[userID].lastAccess.currentUser = +new Date()
+    //   MessagesStore.emitChange()
+    // },
 
     loadMessage(payload) {
       json = payload.action.json
+      MessagesStore.emitChange()
+    },
+
+    sendMessage(payload) {
       MessagesStore.emitChange()
     },
   }

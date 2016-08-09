@@ -1,0 +1,196 @@
+// Place all the styles related to the Users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+html,
+body{
+  height: 100%;
+  width: 100%;
+}
+
+// ここから　sign_up
+
+.sign_up_wrapper {
+  width: 100%;
+  height: 100%;
+  background-image: url(css-background-aspect-ratio.png);
+  background-size: cover;
+}
+
+.inner {
+  background-color: rgba(0, 0, 0, 0.3);
+  height: 100%;
+  width: 100%;
+}
+
+.sign_up_form {
+  width: 35%;
+  margin: 0 auto;
+}
+
+.sign_up_wrapper h2 {
+  padding: 120px 0 30px;
+  color: white;
+  font-size: 30px;
+  text-align: center;
+  margin-top: 0px;
+}
+
+.field_box {
+  width: 100%;
+  height:35px;
+  margin-bottom: 30px;
+  border-radius: 5px;
+}
+
+.field_box:focus {
+  border: 4px solid #4AC1C7;
+  // background-color: #efdd68;
+}
+
+.field_label {
+  font-size: 15px;
+  color: white;
+}
+
+.actions {
+  text-align: center;
+}
+
+.submit {
+  margin-top: 29px;
+  width: 100%;
+  font-size: 15px;
+  border-radius: 4px;
+  padding: 5px 20px;
+  background-color: #efdd68;
+  border: 1px solid white;
+  font-weight: bold;
+}
+
+.submit:hover {
+  border: 2px solid #4AC1C7;
+}
+
+// SignUp 終了
+
+// ここから Sign In
+
+ .sign_in_wrapper {
+   height: 100%;
+   width: 100%;
+   background-image: url(422e8ecbf448c9e0262955330d018ab1_l.jpg);
+   background-size: cover;
+ }
+
+ .sign_in_form {
+   width: 40%;
+   margin-left: 50px;
+   padding-top: 60px;
+ }
+
+ .sign_in_field_box {
+   width: 100%;
+   height: 40px;
+   border-radius: 5px;
+   background-color: rgb(250, 255, 189);
+   margin-bottom: 10px;
+ }
+
+ .sign_in_field_box:focus {
+   border: 4px solid #4AC1C7;
+
+ }
+
+ .sign_in_wrapper h2 {
+   text-align: center;
+   padding: 50px 0px 30px;
+   font-size: 30px;
+   margin: 0;
+ }
+
+ .sign_in_submit {
+   margin-top: 20px;
+   width: 100%;
+   line-height: 40px;
+   font-size: 15px;
+   border-radius: 5px;
+   background-color: #4AC1C7;
+   color: white;
+   font-weight: bold;
+   transition: all 1s;
+ }
+
+ // Sign in終了
+
+ // ここから　show
+.profile-wrapper {
+  background-color: #f0f0f0;
+  height: 100%;
+  width: 100%;
+}
+
+ .profile {
+   height: 100%;
+   width: 20%;
+   float: left;
+   padding: 30px 0px 30px 50px;
+   border-right: 1px solid black;
+   margin-top: 60px;
+   background-color: rgba(0, 0, 0, 0.1);
+ }
+
+ .profile-label {
+   margin-bottom: 10px;
+ }
+
+ .image {
+   height: 50%;
+   width: 50%;
+   border-radius: 10px;
+   border: 3px solid #323a45;
+   margin-bottom: 10px;
+ }
+
+ .detail {
+   height: 100%;
+ }
+
+.edit-link {
+  color: black;
+  border-bottom: 1px solid black;
+}
+
+.edit-link:hover {
+  color: #4AC1C7;
+  border-bottom: 1px solid #4AC1C7;
+}
+
+// Show終了
+
+// edit開始
+.delete_user {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 15px;
+}
+
+// edit 終了
+
+// index 開始
+
+.user-index-wrapper {
+  padding-top: 60px;
+}
+
+.user-list {
+
+}
+
+.user-box {
+
+}
+
+.user-list-image {
+  height: 50px;
+  width: 50px;
+}

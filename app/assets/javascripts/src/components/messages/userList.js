@@ -60,7 +60,7 @@ class UserList extends React.Component {
       return 0
     })
 
-    const messages = this.state.messageList.map((message) => {
+    const messages = this.state.messageList.map((message, index) => {
       const date = Utils.getNiceDate(message.lastMessage.timestamp)
 
       var statusIcon

@@ -6,7 +6,6 @@ import UserStore from '../../stores/user'
 // import Utils from '../../utils'
 
 class MessagesBox extends React.Component {
-
   constructor(props) {
     super(props)
     this.state = this.initialState
@@ -34,7 +33,7 @@ class MessagesBox extends React.Component {
     this.setState(this.getJsonFromStore())
   }
   render() {
-    // const messagesLength = this.state.message.length
+    // const messagesLength = this.state.messages.length
     const currentUserID = UserStore.user.id
     const messages = this.state.messages.map((message) => {
       const messageClasses = classNames({
@@ -45,7 +44,7 @@ class MessagesBox extends React.Component {
 
       return (
           <li
-            key={ message.created_at + '-' + message.receive_uesr_id }
+            key={ message.id}
             className={ messageClasses }
           >
             <div className='message-box__item__contents'>
@@ -55,9 +54,9 @@ class MessagesBox extends React.Component {
         )
     })
 
-    // const lastMessage = this.state.message[messagesLength - 1]
-    //
-    // if (lastMessage.receive_uesr_id === currentUserID) {
+    // const lastMessage = this.state.messages[messagesLength - 1]
+    // //
+    // if (lastMessage.receive_user_id === currentUserID) {
     //   if (this.state.lastAccess.recipient >= lastMessage.timestamp) {
     //     const date = Utils.getShortDate(lastMessage.timestamp)
     //     messages.push(
@@ -68,7 +67,7 @@ class MessagesBox extends React.Component {
     //         </li>
     //       )
     //   }
-    // }
+
     return (
         <div className='message-box'>
           <ul className='message-box__list'>

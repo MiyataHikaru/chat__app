@@ -1,0 +1,19 @@
+.sign_up_wrapper
+  .inner
+    .sign_up_form
+      %h2 ----Edit----
+      = form_for(@user) do |f|
+        = notice
+        .field
+          = f.label :名前, class: 'field_label'
+          %br
+          = f.text_field :name, class: 'field_box'
+        .field
+          = f.label :メールアドレス, class: 'field_label'
+          %br
+          = f.text_field :email, class: 'field_box'
+        .actions
+          = f.submit '保存', class: 'submit'
+        .destroy_link
+          = link_to "アカウントを消去", user_path(@user), method: :delete,
+                    "data-confirm" => "本当に削除しますか？", class: 'delete_user'
