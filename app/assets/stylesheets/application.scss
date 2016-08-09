@@ -1,0 +1,88 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+ html, body,
+ ul, ol, li,
+ h1, h2, h3, h4, h5, h6, p,
+ form, input, div {
+   margin: 0;
+   padding: 0;
+ }
+
+ li {
+   list-style: none;
+ }
+
+ body {
+   -webkit-font-smoothing: antialiased;
+   font-family: 'Hiragino Kaku Gothic Pro', sans-serif;
+ }
+
+
+a {
+  color: white;
+  text-decoration: none;
+  transition: all 0.5s;
+}
+
+ /*header*/
+
+header {
+  height: 60px;
+  background-color: rgba(34, 49, 52, 0.9);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 998;
+}
+
+.header-left {
+  color: white;
+  line-height: 60px;
+  font-size: 36px;
+  margin-left: 20px;
+  float:left;
+}
+
+.header-right {
+  color: white;
+  line-height: 60px;
+  float: right;
+  margin-right: 50px;
+}
+
+.header-right li {
+  float: left;
+  margin-right: 30px;
+  font-size: 17px;
+}
+
+.header-right a:hover {
+  color: #0DC0C0;
+}
+
+.image-link {
+  img {
+    height: 40px;
+    width: 40px;
+    border: 2px solid #999999;
+  }
+}
+
+.fa {
+  margin-right: 5px;
+}
