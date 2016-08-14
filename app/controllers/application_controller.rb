@@ -5,6 +5,14 @@ class ApplicationController < ActionController::Base
 
   include ApplicationHelper
 
+  def after_sign_in_path_for(resource)
+    root_path
+  end
+
+  def after_sign_out_path_for(resource)
+    home_path
+  end
+
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) << :name
   end

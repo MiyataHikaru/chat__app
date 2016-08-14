@@ -3,8 +3,10 @@ Rails.application.routes.draw do
   namespace :api, { format: 'json' } do
     get 'messages/:id' => 'messages#index'
     post 'messages/:id' => 'messages#create'
+    get 'search' => 'users#search'
   end
-  root 'home#home'
+  get 'home' => 'home#home'
   resources :users, only: [:show, :index, :edit, :update, :destroy]
-  get 'messages' => 'messages#index'
+  root 'messages#index'
+  get 'search' => 'users#search'
 end

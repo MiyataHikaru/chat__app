@@ -5,7 +5,7 @@ import MessagesAction from '../actions/messages'
 
 export default class CardRouter extends BaseRouter {
   register() {
-    this.route('/', this.decorateApp)
+    this.route('/', this.decorateApp, this.loadMessage(2))
   }
 
   decorateApp(ctx, next) {
@@ -13,7 +13,7 @@ export default class CardRouter extends BaseRouter {
     next()
   }
 
-  loadMessage(chatID) {
+  loadMessage(chatID, ctx, next) {
     MessagesAction.loadMessage(chatID)
   }
 }

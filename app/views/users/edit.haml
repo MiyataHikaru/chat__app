@@ -12,6 +12,13 @@
           = f.label :メールアドレス, class: 'field_label'
           %br
           = f.text_field :email, class: 'field_box'
+        .field
+          = f.label :自己紹介を追加, class: 'field_label'
+          %br
+          = f.text_area :content, class: 'field_box'
+        .field
+          = f.label :プロフィール画像, class: 'field_label'
+          = f.file_field :image, class: 'field_box'
         .actions
           = f.submit '保存', class: 'submit'
         .destroy_link

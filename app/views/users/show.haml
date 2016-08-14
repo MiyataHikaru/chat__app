@@ -1,16 +1,18 @@
 .profile-wrapper
   .profile
     .profile-image
-      %p.profile-label プロフィール画像
-      %br/
-      = image_tag "huku.jpg", class: 'image'
-    .profile-name
-      %p.profile-label ユーザー
-      %h3= @user.name
-    .profile-email
-      %p.profile-label メールアドレス
-      %h3= @user.email
-    .edit-link-box
-      - if current_user?(@user)
-        = link_to "プロフィールの編集", edit_user_path(@user), class: 'edit-link'
+      = user_image(@user)
+    .profile-detail
+      .profile-content
+        %p.profile-label ユーザー
+        %h3= @user.name
+      .profile-content
+        %p.profile-label メールアドレス
+        %h3= @user.email
+      .profile-content
+        %p.profile-label 自己紹介
+        %h3= @user.content
+      .edit-link-box
+        - if current_user?(@user)
+          = link_to "プロフィールの編集", edit_user_path(@user), class: 'edit-link'
   .detail

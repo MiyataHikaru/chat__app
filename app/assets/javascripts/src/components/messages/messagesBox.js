@@ -34,11 +34,11 @@ class MessagesBox extends React.Component {
   }
   render() {
     // const messagesLength = this.state.messages.length
-    const currentUserID = UserStore.user.id
+    // const currentUserID = UserStore.user.id
     const messages = this.state.messages.map((message) => {
       const messageClasses = classNames({
         'message-box__item': true,
-        'message-box__item--from-current': message.receive_uesr_id === currentUserID,
+        // 'message-box__item--from-current': message.receive_uesr_id === currentUserID,
         'clear': true,
       })
 

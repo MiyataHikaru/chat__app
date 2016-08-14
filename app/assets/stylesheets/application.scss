@@ -43,7 +43,7 @@ a {
 header {
   height: 60px;
   background-color: rgba(34, 49, 52, 0.9);
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
@@ -69,18 +69,16 @@ header {
   float: left;
   margin-right: 30px;
   font-size: 17px;
+  img {
+    height: 40px;
+    width: 40px;
+    border: 2px solid white;
+    cursor: pointer;
+  }
 }
 
 .header-right a:hover {
   color: #0DC0C0;
-}
-
-.image-link {
-  img {
-    height: 40px;
-    width: 40px;
-    border: 2px solid #999999;
-  }
 }
 
 .fa {

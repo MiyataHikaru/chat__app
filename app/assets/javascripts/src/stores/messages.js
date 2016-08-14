@@ -1,6 +1,6 @@
 import Dispatcher from '../dispatcher'
 import BaseStore from '../base/store'
-import UserStore from '../stores/user'
+// import UserStore from '../stores/user'
 
 const messages = {
   2: {

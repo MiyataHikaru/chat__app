@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
 before_action :set_user ,only: [:show, :edit, :update, :destroy]
+before_action :authenticate_user!
 
   def show
 
@@ -9,11 +10,22 @@ before_action :set_user ,only: [:show, :edit, :update, :destroy]
     @users = User.all
   end
 
+  def search
+
+  end
+
   def edit
 
   end
 
   def update
+    file = params[:user][:image]
+    if !file.nil?
+      file_name = file.original_filename
+      File.open("public/user_images/#{file_name}", 'wb'){|f| f.write(file.read)}
+      @user.image = file_name
+    end
+
     if @user.update(user_params)
       redirect_to @user, notice: "プロフィールを更新しました。"
     else
@@ -34,5 +46,5 @@ def set_user
 end
 
 def user_params
-  params.require(:user).permit(:name, :email, :password)
+  params.require(:user).permit(:name, :email, :password, :content)
 end
