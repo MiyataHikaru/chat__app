@@ -9,4 +9,6 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :index, :edit, :update, :destroy]
   root 'messages#index'
   get 'search' => 'users#search'
+  post 'follow/:user_id' => 'friends#create'
+  delete 'unfollow/:user_id' => 'friends#destroy'
 end
