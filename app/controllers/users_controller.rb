@@ -1,9 +1,8 @@
 class UsersController < ApplicationController
-before_action :set_user ,only: [:show, :edit, :update, :destroy]
-before_action :authenticate_user!
+  before_action :set_user ,only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   def show
-
   end
 
   def index
@@ -11,16 +10,14 @@ before_action :authenticate_user!
   end
 
   def search
-
   end
 
   def edit
-
   end
 
   def update
     file = params[:user][:image]
-    if !file.nil?
+    unless file.nil?
       file_name = file.original_filename
       File.open("public/user_images/#{file_name}", 'wb'){|f| f.write(file.read)}
       @user.image = file_name

@@ -5,13 +5,16 @@
     .profile-detail
       .profile-content
         %p.profile-label ユーザー
-        %h3= @user.name
+        %h3
+          = @user.name
       .profile-content
         %p.profile-label メールアドレス
-        %h3= @user.email
+        %h3
+          = @user.email
       .profile-content
         %p.profile-label 自己紹介
-        %h3= @user.content
+        %h3
+          = @user.content
       .edit-link-box
         - if current_user?(@user)
           = link_to "プロフィールの編集", edit_user_path(@user), class: 'edit-link'

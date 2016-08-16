@@ -13,7 +13,7 @@ export default class CardRouter extends BaseRouter {
     next()
   }
 
-  loadMessage(chatID, ctx, next) {
-    MessagesAction.loadMessage(chatID)
+  loadMessage(chatId, ctx, next) {
+    MessagesAction.loadMessage(chatId)
   }
 }

@@ -6,16 +6,6 @@ import MessagesAction from '../../actions/messages'
 
 export default class SearchBox extends React.Component {
 
-  static get defaultProps() {
-    return {
-    }
-  }
-
-  static get propTypes() {
-    return {
-    }
-  }
-
   constructor(props) {
     super(props)
     this.state = this.initialState
@@ -26,7 +16,7 @@ export default class SearchBox extends React.Component {
   get initialState() {
     return this.getJsonFromStore()
     return {
-      value: ''
+      value: '',
     }
   }
 
@@ -55,7 +45,6 @@ export default class SearchBox extends React.Component {
   }
 
   render() {
-
     const users = this.state.users.map((user) => {
       if (!_.isEmpty(this.state.value) && user.name.indexOf(this.state.value) >= 0) {
         return (
@@ -64,10 +53,10 @@ export default class SearchBox extends React.Component {
             >
             <img src="assets/hituji.png" />
             <div className='user-name'>
-              { user.name }
+              {user.name}
             </div>
             <div className='user-content'>
-              { user.content }
+              {user.content}
             </div>
           </a>
         )
@@ -79,9 +68,9 @@ export default class SearchBox extends React.Component {
         <h1>ユーザー検索</h1>
         <div className='search-box'>
           <input
-            value={ this.state.value }
-            onKeyDown= { this.handleKeyDown }
-            onChange= { this.updateValue }
+            value={this.state.value}
+            onKeyDown= {this.handleKeyDown}
+            onChange= {this.updateValue}
             className='search-box-input'
             placeholder='Seaech'
           />

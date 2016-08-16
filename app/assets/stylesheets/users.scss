@@ -75,50 +75,49 @@ body{
 
 // ここから Sign In
 
- .sign_in_wrapper {
-   height: 100%;
-   width: 100%;
-   background-image: url(422e8ecbf448c9e0262955330d018ab1_l.jpg);
-   background-size: cover;
- }
+.sign_in_wrapper {
+  height: 100%;
+  width: 100%;
+  background-image: url(422e8ecbf448c9e0262955330d018ab1_l.jpg);
+  background-size: cover;
+}
 
- .sign_in_form {
-   width: 40%;
-   margin-left: 50px;
-   padding-top: 60px;
- }
+.sign_in_form {
+  width: 40%;
+  margin-left: 50px;
+  padding-top: 60px;
+}
 
- .sign_in_field_box {
-   width: 100%;
-   height: 40px;
-   border-radius: 5px;
-   background-color: rgb(250, 255, 189);
-   margin-bottom: 10px;
- }
+.sign_in_field_box {
+  width: 100%;
+  height: 40px;
+  border-radius: 5px;
+  background-color: rgb(250, 255, 189);
+  margin-bottom: 10px;
+}
 
- .sign_in_field_box:focus {
-   border: 4px solid #4AC1C7;
+.sign_in_field_box:focus {
+  border: 4px solid #4AC1C7;
+}
 
- }
+.sign_in_wrapper h2 {
+  text-align: center;
+  padding: 50px 0px 30px;
+  font-size: 30px;
+  margin: 0;
+}
 
- .sign_in_wrapper h2 {
-   text-align: center;
-   padding: 50px 0px 30px;
-   font-size: 30px;
-   margin: 0;
- }
-
- .sign_in_submit {
-   margin-top: 20px;
-   width: 100%;
-   line-height: 40px;
-   font-size: 15px;
-   border-radius: 5px;
-   background-color: #4AC1C7;
-   color: white;
-   font-weight: bold;
-   transition: all 1s;
- }
+.sign_in_submit {
+  margin-top: 20px;
+  width: 100%;
+  line-height: 40px;
+  font-size: 15px;
+  border-radius: 5px;
+  background-color: #4AC1C7;
+  color: white;
+  font-weight: bold;
+  transition: all 1s;
+}
 
  // Sign in終了
 
@@ -129,39 +128,39 @@ body{
   width: 100%;
 }
 
- .profile {
-   height: 100%;
-   width: 20%;
-   float: left;
-   padding: 30px 0px 30px 50px;
-   border-right: 1px solid black;
-   margin-top: 60px;
-   background-color: rgba(0, 0, 0, 0.1);
- }
+.profile {
+  height: 100%;
+  width: 20%;
+  float: left;
+  padding: 30px 0px 30px 50px;
+  border-right: 1px solid black;
+  margin-top: 60px;
+  background-color: rgba(0, 0, 0, 0.1);
+}
 
 .user-image {
-    height: 50%;
-    width: 50%;
-    border-radius: 10px;
-    border: 3px solid #323a45;
+  height: 50%;
+  width: 50%;
+  border-radius: 10px;
+  border: 3px solid #323a45;
 }
 
 .profile-detail {
   margin-top: 30px;
 }
 
- .profile-label {
-   margin-bottom: 2px;
- }
+.profile-label {
+  margin-bottom: 2px;
+}
 
- .profile-content {
-   margin-bottom: 22px;
- }
+.profile-content {
+  margin-bottom: 22px;
+}
 
 
- .detail {
-   height: 100%;
- }
+.detail {
+  height: 100%;
+}
 
 .edit-link {
   color: black;
@@ -197,9 +196,9 @@ body{
 }
 
 .index-user-list {
- text-align: center;
- margin: 30px 200px;
- box-sizing: border-box;
+  text-align: center;
+  margin: 30px 200px;
+  box-sizing: border-box;
 }
 
 .user-box {

@@ -15,29 +15,29 @@
       .header-right
         %ul
           -if user_signed_in?
-            %li<
+            %li
               = link_to root_path, data: {no_turbolink: true} do
-                %span.fa.fa-home>
+                %span.fa.fa-home
                 ホーム
-            %li<
+            %li
               = link_to search_path, data: {no_turbolink: true} do
-                %span.fa.fa-search>
+                %span.fa.fa-search
                 ユーザー検索
-            %li<
+            %li
               = link_to destroy_user_session_path, method: :delete do
-                %span.fa.fa-sign-out>
+                %span.fa.fa-sign-out
                 ログアウト
-            %li<
+            %li
               = link_to current_user do
                 = user_image(current_user)
 
           -else
-            %li<
+            %li
               = link_to new_user_registration_path do
-                %span.fa.fa-tag>
+                %span.fa.fa-tag
                 新規登録
-            %li<
+            %li
               = link_to new_user_session_path do
-                %span.fa.fa-sign-in>
+                %span.fa.fa-sign-in
                 ログイン
     = yield
