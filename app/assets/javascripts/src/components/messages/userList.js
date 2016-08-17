@@ -47,8 +47,7 @@ class UserList extends React.Component {
     MessagesAction.changeOpenChat(id)
     MessagesAction.loadMessage(id)
   }
-  // loadMessage() {
-  // }
+
   render() {
     this.state.messageList.sort((a, b) => {
       if (a.lastMessage.timestamp > b.lastMessage.timestamp) {
@@ -89,6 +88,7 @@ class UserList extends React.Component {
 
       return (
         <li
+        // 結局ここの引数で出てくるメッセージを選んでる。
           onClick={ this.changeOpenChat.bind(this, message.user.id) }
           className={ itemClasses }
           key={ message.user.id }
@@ -110,6 +110,7 @@ class UserList extends React.Component {
         </li>
       )
     }, this)
+
     return (
       <div className='user-list'>
         <ul className='user-list__list'>

@@ -14,9 +14,6 @@ class MessagesBox extends React.Component {
     return this.getJsonFromStore()
   }
 
-  // getStateFromStore() {
-  //   return MessagesStore.getChatByUserID(MessagesStore.getOpenChatUserID())
-  // }
   getJsonFromStore() {
     return MessagesStore.getJson()
   }
@@ -34,17 +31,17 @@ class MessagesBox extends React.Component {
   }
   render() {
     // const messagesLength = this.state.messages.length
-    // const currentUserID = UserStore.user.id
+    const currentUserID = 3
     const messages = this.state.messages.map((message) => {
       const messageClasses = classNames({
         'message-box__item': true,
-        // 'message-box__item--from-current': message.receive_uesr_id === currentUserID,
+        'message-box__item--from-current': message.from === currentUserID,
         'clear': true,
       })
 
       return (
           <li
-            key={ message.id}
+            key={ message.id }
             className={ messageClasses }
           >
             <div className='message-box__item__contents'>
@@ -55,8 +52,8 @@ class MessagesBox extends React.Component {
     })
 
     // const lastMessage = this.state.messages[messagesLength - 1]
-    // //
-    // if (lastMessage.receive_user_id === currentUserID) {
+
+    // if (lastMessage.from === currentUserID) {
     //   if (this.state.lastAccess.recipient >= lastMessage.timestamp) {
     //     const date = Utils.getShortDate(lastMessage.timestamp)
     //     messages.push(

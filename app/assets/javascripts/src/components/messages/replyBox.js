@@ -30,7 +30,6 @@ class ReplyBox extends React.Component {
     if (e.keyCode === 13) {
       MessagesAction.sendMessage(MessagesStore.getOpenChatUserID(), this.state.value)
       MessagesAction.loadMessage(MessagesStore.getOpenChatUserID())
-      // MessagesAction.sendMess(MessagesStore.getOpenChatUserID(), this.state.value)
       this.setState({
         value: '',
       })

@@ -17,10 +17,10 @@ export default {
       timestamp: +new Date(),
     })
   },
-  loadMessage(chatID) {
+  loadMessage(userId) {
     return new Promise((resolve, reject) => {
       request
-      .get(`http://localhost:3000/api/messages/${chatID}`)
+      .get(`http://localhost:3000/api/messages/${userId}`)
       .end(function(err, res) {
         if (res.ok) {
           const json = JSON.parse(res.text)
@@ -36,11 +36,11 @@ export default {
     })
   },
 
-  sendMessage(chatID, content) {
+  sendMessage(userId, content) {
     return new Promise((resolve, reject) => {
       request
-      .post(`http://localhost:3000/api/messages/${chatID}`)
-      .send({content, 'chat_id': chatID})
+      .post(`http://localhost:3000/api/messages/${userId}`)
+      .send({content, 'user_id': userId})
       .set('X-CSRF-Token', CSRFToken())
       .end(function(err, res) {
         if (res.ok) {
@@ -49,7 +49,7 @@ export default {
           Dispatcher.handleServerAction({
             type: 'sendMessage',
             content,
-            chatID,
+            chatId,
             json,
           })
         } else {
