@@ -49,7 +49,7 @@ export default {
           Dispatcher.handleServerAction({
             type: 'sendMessage',
             content,
-            chatId,
+            userId,
             json,
           })
         } else {

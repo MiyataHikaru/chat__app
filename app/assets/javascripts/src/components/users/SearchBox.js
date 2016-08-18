@@ -9,7 +9,6 @@ export default class SearchBox extends React.Component {
   constructor(props) {
     super(props)
     this.state = this.initialState
-    // this.handleKeyDown = this.handleKeyDown.bind(this)
     this.updateValue = this.updateValue.bind(this)
   }
 
@@ -75,6 +74,7 @@ export default class SearchBox extends React.Component {
             onChange= {this.updateValue}
             className='search-box-input'
             placeholder='Seaech'
+            autoFocus={true}
           />
           <div className='index-user-list'>
             { users }

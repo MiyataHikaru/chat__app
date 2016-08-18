@@ -53,7 +53,11 @@ class ReplyBox extends React.Component {
         <span className='reply-box__tip'>
           Press <span className='reply-box__tip__button'>Enter</span> to send
         </span>
+        <input
+          type='file'
+          />
       </div>
+
     )
   }
 }

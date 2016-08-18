@@ -1,19 +1,21 @@
 import Dispatcher from '../dispatcher'
 import BaseStore from '../base/store'
 
-const UserStore = {
-  user: {
-    id: 1,
-    name: 'John Doek',
-    profilePicture: 'https://avatars1.githubusercontent.com/u/8901351?v=3&s=200',
-  },
-}
-
 let json = []
+let following = []
+let followers = []
 
 class ChatUserStore extends BaseStore {
   getJson() {
     return { users: json }
+  }
+
+  getFollowing() {
+    return { followings: following }
+  }
+
+  getFollowers() {
+    return { followers: followers }
   }
 }
 const UsersStore = new ChatUserStore()
@@ -24,10 +26,16 @@ UsersStore.dispatchToken = Dispatcher.register(payload => {
       json = payload.action.json
       UsersStore.emitChange()
     },
+    loadFollowing(payload) {
+      following = payload.action.following
+      UsersStore.emitChange()
+    },
+    loadFollowers(payload) {
+      followers = payload.action.followers
+      UsersStore.emitChange()
+    },
   }
   actions[payload.action.type] && actions[payload.action.type](payload)
 })
 
-
-export default UserStore
 export default UsersStore

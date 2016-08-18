@@ -9,7 +9,7 @@
 
   &__item {
     padding: 14px 10px 14px 15px;
-    border-bottom: 1px solid rgba( 0, 0, 0, 0.1 );
+    border: 2px solid rgba( 0, 0, 0, 0.1 );
     cursor: pointer;
     background-color: white;
 
@@ -24,7 +24,7 @@
     }
 
     &--active {
-      background: #93C26D;
+      background: red;
       color: #fff;
       font-weight: 500;
       position: relative;
@@ -84,4 +84,24 @@
       padding-left: 15px;
     }
   }
+}
+
+.user-list__item {
+  transition: all 0.2s;
+  position: relative;
+}
+
+.user-list__item:hover {
+  background-color: #7fff00;
+  border: 2px solid #218CB9;
+}
+
+.destroy-friend {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  padding: 3px;
+  background-color: #dcdcdc;
+  border-radius: 50px;
+  color: #696969;
 }

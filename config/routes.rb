@@ -4,6 +4,8 @@ Rails.application.routes.draw do
     get 'messages/:id' => 'messages#index'
     post 'messages/:id' => 'messages#create'
     get 'search' => 'users#search'
+    get 'following' => 'users#following'
+    get 'followers' => 'users#followers'
   end
   get 'home' => 'home#home'
   resources :users, only: [:show, :index, :edit, :update, :destroy]

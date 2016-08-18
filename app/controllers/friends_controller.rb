@@ -15,5 +15,6 @@ class FriendsController < ApplicationController
     @user = User.find(params[:user_id])
     follow = current_user.active_relationships.find_by(followed_id: @user.id)
     follow.destroy
+    redirect_to root_path
   end
 end

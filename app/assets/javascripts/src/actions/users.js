@@ -21,4 +21,40 @@ export default {
       })
     })
   },
+  loadFollowing() {
+    return new Promise((resolve, reject) => {
+      request
+      .get('http://localhost:3000/api/following')
+      .end(function(err, res) {
+        if (res.ok) {
+          const following = JSON.parse(res.text)
+          resolve()
+          Dispatcher.handleServerAction({
+            type: 'loadFollowing',
+            following: following,
+          })
+        }else {
+          reject(res)
+        }
+      })
+    })
+  },
+  loadFollowers() {
+    return new Promise((resolve, reject) => {
+      request
+      .get('http://localhost:3000/api/followers')
+      .end(function(err, res) {
+        if (res.ok) {
+          const followers = JSON.parse(res.text)
+          resolve()
+          Dispatcher.handleServerAction({
+            type: 'loadFollowers',
+            followers: followers,
+          })
+        }else {
+          reject(res)
+        }
+      })
+    })
+  },
 }
