@@ -28,6 +28,17 @@
         color: #fff;
         margin-bottom: 10px;
       }
+
+      .message-box__item__image {
+        float: right;
+        margin-bottom: 10px;
+        img {
+          border-radius: 10px;
+          width: 220px;
+          height: 220px;
+        }
+      }
+
     }
 
     &--read {

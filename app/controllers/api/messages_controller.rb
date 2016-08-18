@@ -1,8 +1,14 @@
 class Api::MessagesController < ApplicationController
   def create
     # binding.pry
-    @message = Message.new(message_params)
+    file = params[:file]
+    @message = Message.new(content: params[:content], user_id: params[:user_id])
     @message.from = current_user.id
+    unless file.nil?
+      file_name = file.original_filename
+      File.open("public/message_images/#{file_name}", 'wb'){|f| f.write(file.read)}
+      @message.file = file_name
+    end
     @message.save
     redirect_to root_path
   end
@@ -13,10 +19,5 @@ class Api::MessagesController < ApplicationController
     @from_messages = User.find(id).messages.where(user_id: current_user.id)
     render json: ((@messages<<@from_messages).flatten.sort_by &:created_at)
   end
-
-private
-
-  def message_params
-    params.require(:message).permit(:content, :user_id)
-  end
+  
 end

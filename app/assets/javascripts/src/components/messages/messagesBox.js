@@ -38,17 +38,31 @@ class MessagesBox extends React.Component {
         'message-box__item--from-current': message.from === currentUserID,
         'clear': true,
       })
-
+    if (message.file) {
       return (
-          <li
-            key={ message.id }
-            className={ messageClasses }
-          >
-            <div className='message-box__item__contents'>
-              { message.content }
-            </div>
-          </li>
-        )
+        <li
+          key={ message.id }
+          className={ messageClasses }
+        >
+          <div className='message-box__item__image'>
+            <img src={`message_images/${message.file}`} />
+          </div>
+        </li>
+      )
+    } else {
+      return (
+        <li
+          key={ message.id }
+          className={ messageClasses }
+        >
+          <div className='message-box__item__contents'>
+            { message.content }
+          </div>
+        </li>
+      )
+    }
+
+
     })
 
     // const lastMessage = this.state.messages[messagesLength - 1]

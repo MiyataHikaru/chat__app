@@ -9,14 +9,6 @@ export default {
       userID: newUserID,
     })
   },
-  sendMessage(userID, message) {
-    Dispatcher.handleViewAction({
-      type: 'sendMessage',
-      userID: userID,
-      message: message,
-      timestamp: +new Date(),
-    })
-  },
   loadMessage(userId) {
     return new Promise((resolve, reject) => {
       request
@@ -58,4 +50,28 @@ export default {
       })
     })
   },
+
+  uploadImage(userId, file) {
+    return new Promise((resolve, reject) => {
+      request
+      .post(`http://localhost:3000/api/messages/${userId}`)
+      .attach('file', file)
+      .field('user_id', userId)
+      .set('X-CSRF-Token', CSRFToken())
+      .end(function(err, res) {
+        if (res.ok) {
+          const json = JSON.parse(res.text)
+          resolve(json)
+          Dispatcher.handleServerAction({
+            trpe: 'uploadImage',
+            file,
+            userId,
+            json,
+          })
+        } else {
+          reject(res)
+        }
+      })
+    })
+  }
 }
