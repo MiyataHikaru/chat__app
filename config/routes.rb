@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     get 'search' => 'users#search'
     get 'following' => 'users#following'
     get 'followers' => 'users#followers'
+    get 'current' => 'users#current'
   end
   get 'home' => 'home#home'
   resources :users, only: [:show, :index, :edit, :update, :destroy]

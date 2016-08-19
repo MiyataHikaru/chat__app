@@ -15,15 +15,20 @@ class MessagesBox extends React.Component {
   }
 
   getJsonFromStore() {
-    return MessagesStore.getJson()
+    return {
+      current_user: UsersStore.getCurrentUser(),
+      messages: MessagesStore.getJson()
+    }
   }
 // あまり理解できていない。
   componentWillMount() {
-    MessagesStore.onChange(this.onStoreChange.bind(this))
+    MessagesStore.onChange(this.onStoreChange.bind(this)),
+    UsersStore.onChange(this.onStoreChange.bind(this))
   }
 // あまり理解できていない。
   componentWillUnmount() {
-    MessagesStore.offChange(this.onStoreChange.bind(this))
+    MessagesStore.offChange(this.onStoreChange.bind(this)),
+    UsersStore.onChange(this.onStoreChange.bind(this))
   }
 
   onStoreChange() {
@@ -31,7 +36,7 @@ class MessagesBox extends React.Component {
   }
   render() {
     // const messagesLength = this.state.messages.length
-    const currentUserID = 3
+    const currentUserID = this.state.current_user.id
     const messages = this.state.messages.map((message) => {
       const messageClasses = classNames({
         'message-box__item': true,

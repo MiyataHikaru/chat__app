@@ -33,7 +33,7 @@ export default {
             type: 'loadFollowing',
             following: following,
           })
-        }else {
+        } else {
           reject(res)
         }
       })
@@ -51,10 +51,28 @@ export default {
             type: 'loadFollowers',
             followers: followers,
           })
-        }else {
+        } else {
           reject(res)
         }
       })
     })
   },
+  loadCurrentUser() {
+    return new Promise((resolve, reject) => {
+      request
+      .get('http://localhost:3000/api/current')
+      .end(function(err, res) {
+        if (res.ok) {
+          const current_user = JSON.parse(res.text)
+          resolve()
+          Dispatcher.handleServerAction({
+            type: 'loadCurrentUser',
+            current_user: current_user,
+          })
+        } else {
+          reject(res)
+        }
+      })
+    })
+  }
 }

@@ -1,8 +1,11 @@
 import Dispatcher from '../dispatcher'
 import BaseStore from '../base/store'
-// import UserStore from '../stores/user'
+import UsersStore from './user'
+import MessagesAction from '../actions/messages'
+import _ from 'lodash'
 
-let openChatID = 16
+// const hoge = UsersStore.getFollowing()[0]
+let openChatID = -1
 let json = []
 
 class ChatStore extends BaseStore {
@@ -14,18 +17,19 @@ class ChatStore extends BaseStore {
     this.off('change', callback)
   }
   getOpenChatUserID() {
+    const users = UsersStore.getFollowing()
+    if (openChatID === -1 && !_.isEmpty(users)) {
+      openChatID = users[0].id
+    }
+    // console.log('hoge')
+    // MessagesAction.loadMessage(openChatID)
     return openChatID
   }
-  getChatByUserID(id) {
-    return messages[id]
-  }
-  getAllChats() {
-    return messages
-  }
   getJson() {
-    return { messages: json }
+    return json
   }
 }
+
 const MessagesStore = new ChatStore()
 
 MessagesStore.dispatchToken = Dispatcher.register(payload => {
@@ -37,12 +41,15 @@ MessagesStore.dispatchToken = Dispatcher.register(payload => {
 
     loadMessage(payload) {
       json = payload.action.json
+      console.log(json)
       MessagesStore.emitChange()
     },
 
     sendMessage(payload) {
       MessagesStore.emitChange()
     },
+
+
   }
   actions[payload.action.type] && actions[payload.action.type](payload)
 })

@@ -18,7 +18,10 @@ class UserList extends React.Component {
   }
 
   getFollowingFromStore() {
-    return UsersStore.getFollowing()
+    return {
+      followingUsers: UsersStore.getFollowing(),
+      openChatId: MessagesStore.getOpenChatUserID()
+    }
   }
   componentWillMount() {
     MessagesStore.onChange(this.onStoreChange.bind(this))
@@ -37,6 +40,7 @@ class UserList extends React.Component {
   }
 
   render() {
+    const {followingUsers, openChatId} = this.state
     // this.state.messageList.sort((a, b) => {
     //   if (a.lastMessage.timestamp > b.lastMessage.timestamp) {
     //     return -1
@@ -47,7 +51,7 @@ class UserList extends React.Component {
     //   return 0
     // })
 
-    const followings = this.state.followings.map((following) => {
+    const followings = followingUsers.map((following) => {
       // const date = Utils.getNiceDate(message.lastMessage.timestamp)
 
       // var statusIcon
@@ -71,32 +75,58 @@ class UserList extends React.Component {
         'user-list__item': true,
         'clear': true,
         // 'user-list__item--new': isNewMessage,
-        'user-list__item--active': this.state.openChatID === following.id,
+        'user-list__item--active': openChatId === following.id,
       })
 
-      return (
-        <li
-        // 結局ここの引数で出てくるメッセージを選んでる。
-          onClick={ this.changeOpenChat.bind(this, following.id) }
-          className={ itemClasses }
-          key={ following.id }
-        >
-          <div className='user-list__item__picture'>
-            <img src={`/user_images/${following.image}`} />
-          </div>
-          <div className='user-list__item__details'>
-            <h4 className='user-list__item__name'>
-              { following.name }
-            </h4>
-          </div>
-          <a
-            className='fa fa-times destroy-friend'
-            href={`/unfollow/${following.id}`}
-            data-method='delete'
-            >
-          </a>
-        </li>
-      )
+      if (following.image) {
+        return (
+          <li
+          // 結局ここの引数で出てくるメッセージを選んでる。
+            onClick={ this.changeOpenChat.bind(this, following.id) }
+            className={ itemClasses }
+            key={ following.id }
+          >
+            <div className='user-list__item__picture'>
+              <img src={`user_images/${following.image}`} />
+            </div>
+            <div className='user-list__item__details'>
+              <h4 className='user-list__item__name'>
+                { following.name }
+              </h4>
+            </div>
+            <a
+              className='fa fa-times destroy-friend'
+              href={`/unfollow/${following.id}`}
+              data-method='delete'
+              >
+            </a>
+          </li>
+        )
+      } else {
+        return (
+          <li
+          // 結局ここの引数で出てくるメッセージを選んでる。
+            onClick={ this.changeOpenChat.bind(this, following.id) }
+            className={ itemClasses }
+            key={ following.id }
+          >
+            <div className='user-list__item__picture'>
+              <img src="assets/hituji.png" />
+            </div>
+            <div className='user-list__item__details'>
+              <h4 className='user-list__item__name'>
+                { following.name }
+              </h4>
+            </div>
+            <a
+              className='fa fa-times destroy-friend'
+              href={`/unfollow/${following.id}`}
+              data-method='delete'
+              >
+            </a>
+          </li>
+        )
+      }
     }, this)
 
     return (

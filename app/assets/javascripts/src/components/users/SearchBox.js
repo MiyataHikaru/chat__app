@@ -20,7 +20,9 @@ export default class SearchBox extends React.Component {
   }
 
   getJsonFromStore() {
-    return UsersStore.getJson()
+    return {
+      users: UsersStore.getJson()
+    }
   }
 
 // あまり理解できていない。
@@ -46,21 +48,39 @@ export default class SearchBox extends React.Component {
   render() {
     const users = this.state.users.map((user) => {
       if (!_.isEmpty(this.state.value) && user.name.indexOf(this.state.value) >= 0) {
-        return (
-          <a
-            className='user-box'
-            href={`/follow/${user.id}`}
-            data-method='post'
-            >
-            <img src="assets/hituji.png" />
-            <div className='user-name'>
-              {user.name}
-            </div>
-            <div className='user-content'>
-              {user.content}
-            </div>
-          </a>
-        )
+        if (user.image) {
+          return (
+            <a
+              className='user-box'
+              href={`/follow/${user.id}`}
+              data-method='post'
+              >
+              <img src={`user_images/${user.image}`} />
+              <div className='user-name'>
+                {user.name}
+              </div>
+              <div className='user-content'>
+                {user.content}
+              </div>
+            </a>
+          )
+        } else {
+          return (
+            <a
+              className='user-box'
+              href={`/follow/${user.id}`}
+              data-method='post'
+              >
+              <img src="assets/hituji.png" />
+              <div className='user-name'>
+                {user.name}
+              </div>
+              <div className='user-content'>
+                {user.content}
+              </div>
+            </a>
+          )
+        }
       }
     })
 

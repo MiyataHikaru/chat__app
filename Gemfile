@@ -3,7 +3,6 @@ source 'https://rubygems.org'
 
 gem 'rails', '4.2.6'
 gem 'devise', '3.5.1'
-gem 'erb2haml'
 gem 'sqlite3'
 gem 'haml-rails'
 gem 'erb2haml'
@@ -21,6 +20,7 @@ gem 'pry-rails'
 gem 'better_errors'
 gem 'hirb'
 gem 'hirb-unicode'
+gem 'faker', '1.4.2'
 
 
 group :development, :test do

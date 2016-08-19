@@ -9,4 +9,20 @@
             = user.name
           .user-content
             = user.content
-    .clear
+        .clear
+
+#apply-modal.apply-modal-wrapper
+  .modal
+    #close-modal
+      %i.fa.fa-2x.fa-times
+    #apply-form
+      %h2#course-name 各種コースお申し込み
+      %form
+        %select#course-select{:name => "course"}
+          %option{:value => "short"} 短期集中2週間コース
+          %option{:selected => "selected", :value => "middle"} 通常1ヶ月コース
+          %option{:value => "long"} 土日開発2ヶ月コース
+        %input.form-control{:placeholder => "氏名", :type => "text"}/
+        %input.form-control{:placeholder => "メールアドレス", :type => "text"}/
+        %textarea{:name => "message", :placeholder => "志望理由"}
+        #submit-btn.apply-show 確認画面へ

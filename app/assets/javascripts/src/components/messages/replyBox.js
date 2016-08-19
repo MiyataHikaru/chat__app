@@ -46,6 +46,7 @@ class ReplyBox extends React.Component {
     MessagesAction.loadMessage(MessagesStore.getOpenChatUserID())
   }
   render() {
+
     return (
       <div className='reply-box'>
         <input
@@ -65,7 +66,6 @@ class ReplyBox extends React.Component {
           onChange={ this.uploadImage }
         />
       </div>
-
     )
   }
 }
