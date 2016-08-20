@@ -8,7 +8,7 @@
     = javascript_include_tag 'application'
     = javascript_include_tag '/assets/javascripts/boot.js'
     = csrf_meta_tags
-  %body
+    %body
     %header
       .header-left
         = link_to "Chatapp.", users_path
@@ -40,4 +40,8 @@
               = link_to new_user_session_path do
                 %span.fa.fa-sign-in
                 ログイン
+    %p.notice-messages.alert-messages
+      = notice
+    %p.danger-messages.alert-messages
+      = alert
     = yield

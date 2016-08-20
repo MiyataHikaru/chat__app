@@ -22,7 +22,6 @@ class ChatUserStore extends BaseStore {
   getFollowers() {
     return followers
   }
-
 }
 const UsersStore = new ChatUserStore()
 

@@ -14,6 +14,9 @@
  *= require_self
  */
 
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
  html, body,
  ul, ol, li,
  h1, h2, h3, h4, h5, h6, p,
@@ -80,3 +83,30 @@ header {
 .header-right a:hover {
   color: #0DC0C0;
 }
+
+// flashmessage
+
+.alert-messages {
+  border-radius: 4px;
+  line-height: 40px;
+  padding: 0 15px;
+  font-size: small;
+  z-index: 1000000000;
+  position: absolute;
+  top: 80px;
+  right: 20px;
+}
+
+.notice-messages {
+  color: #3c763d;
+  background-color: #dff0d8;
+}
+
+.danger-messages {
+  background-color: #f2dede;
+  color: #a94442;
+}
+
+.danger-messages ul li {
+  list-style-type: disc;
+ }

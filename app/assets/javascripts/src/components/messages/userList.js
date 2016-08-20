@@ -85,6 +85,7 @@ class UserList extends React.Component {
             onClick={ this.changeOpenChat.bind(this, following.id) }
             className={ itemClasses }
             key={ following.id }
+            deta-remote="true"
           >
             <div className='user-list__item__picture'>
               <img src={`user_images/${following.image}`} />

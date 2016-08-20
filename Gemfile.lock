@@ -48,6 +48,10 @@ GEM
       rack (>= 0.9.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    bootstrap-sass (3.2.0.0)
+      sass (~> 3.2)
+    bootstrap-will_paginate (0.0.10)
+      will_paginate
     browserify-rails (3.1.0)
       railties (>= 4.0.0, < 5.1)
       sprockets (>= 3.5.2)
@@ -213,12 +217,15 @@ GEM
       binding_of_caller (>= 0.7.2)
       railties (>= 4.0)
       sprockets-rails (>= 2.0, < 4.0)
+    will_paginate (3.0.7)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   better_errors
+  bootstrap-sass (= 3.2.0.0)
+  bootstrap-will_paginate (= 0.0.10)
   browserify-rails
   coffee-rails (~> 4.1.0)
   devise (= 3.5.1)
@@ -241,6 +248,7 @@ DEPENDENCIES
   turbolinks
   uglifier (>= 1.3.0)
   web-console (~> 2.0)
+  will_paginate (= 3.0.7)
 
 BUNDLED WITH
    1.12.5

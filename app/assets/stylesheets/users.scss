@@ -188,7 +188,6 @@ body{
 .user-index-wrapper {
   padding-top: 60px;
   background-color: rgba(233, 233, 233, 0.3);
-  height: 100%;
   h2 {
     text-align: center;
     font-size: 40px;
@@ -236,74 +235,16 @@ body{
 
 // ここからmomdal
 
-.apply-modal-wrapper {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-color: rgba(0, 0, 0, 0.6);
-  z-index: 10000;
-  display: none;
-}
 
-.modal {
-  position: absolute;
-  margin: 180px 450px;
-  background-color: #e6ecf0;
-  padding: 20px 0 40px;
-  border-radius: 10px;
-  width: 550px;
-  height: 500px;
+// model終わり
+
+.pagenate-box {
   text-align: center;
-  display: block;
 }
 
-.fa-times {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  color: rgba(128, 128, 128, 0.46);
-  cursor: pointer;
-}
-
-#apply-form {
-  width: 100%;
-}
-
-#apply-form h2 {
-  color: #5f5d60;
-  letter-spacing: 1px;
-  margin-bottom: 40px;
-  margin-top: 20px;
-}
-
-#apply-form input, #apply-form textarea, select {
-  width: 400px;
-  margin-bottom: 15px;
-  font-size: 12px;
-  padding: 10px 10px;
-  border: 1px solid #d0d5d8;
-  border-radius: 5px;
-  display: inline;
-}
-
-#apply-form textarea {
-  max-height: 100px;
-}
-
-select {
-  height: 40px;
-}
-
-#submit-btn {
+.pagenation {
   display: inline-block;
-  padding: 14px 140px;
-  background-color: #5dca88;
-  border: none;
-  border-radius: 3px;
-  color: white;
-  margin: 10px auto;
-  cursor: pointer;
-  width: 400px;
+  padding-left: 0;
+  margin: 20px 0;
+  border-radius: 4px;
 }
