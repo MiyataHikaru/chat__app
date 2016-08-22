@@ -2,9 +2,11 @@ import React from 'react'
 import classNames from 'classNames'
 import MessagesStore from '../../stores/messages'
 import ReplyBox from '../../components/messages/replyBox'
-import UserStore from '../../stores/user'
+import UserStore from '../../stores/user' // 使ってないよ
+// 以下も要らないなら消す
 // import Utils from '../../utils'
 
+// 全体的に不要なコメントは消そう
 class MessagesBox extends React.Component {
   constructor(props) {
     super(props)

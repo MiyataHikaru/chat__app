@@ -2,7 +2,7 @@ import React from 'react'
 import UsersStore from '../../stores/user'
 import UsersAction from '../../actions/users'
 import _ from 'lodash'
-import MessagesAction from '../../actions/messages'
+import MessagesAction from '../../actions/messages' // 使ってない
 
 export default class SearchBox extends React.Component {
 
@@ -15,6 +15,7 @@ export default class SearchBox extends React.Component {
 
   get initialState() {
     return this.getJsonFromStore()
+    // returnの後にまたreturnが来るのはおかしい
     return {
       value: '',
     }
@@ -40,7 +41,7 @@ export default class SearchBox extends React.Component {
   updateValue(e) {
     this.setState({
       value: e.target.value,
-    }),
+    }), // ここコンマいる？
     UsersAction.loadUser()
   }
 
@@ -53,7 +54,7 @@ export default class SearchBox extends React.Component {
             href={`/follow/${user.id}`}
             data-method='post'
             >
-            <img src="assets/hituji.png" />
+            <img src="assets/hituji.png" /> // シングルクォーテーション
             <div className='user-name'>
               {user.name}
             </div>

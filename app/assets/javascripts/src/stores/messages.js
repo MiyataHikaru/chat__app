@@ -2,6 +2,7 @@ import Dispatcher from '../dispatcher'
 import BaseStore from '../base/store'
 // import UserStore from '../stores/user'
 
+// このデフォルトデータいらんだろ
 const messages = {
   2: {
     user: {
@@ -67,7 +68,7 @@ const messages = {
     ],
   },
 }
-
+// この辺もいらなさそう
 let openChatID = parseInt(Object.keys(messages)[0], 10)
 let json = []
 
@@ -114,6 +115,7 @@ MessagesStore.dispatchToken = Dispatcher.register(payload => {
     // },
 
     loadMessage(payload) {
+      // const {json} = payload.action
       json = payload.action.json
       MessagesStore.emitChange()
     },

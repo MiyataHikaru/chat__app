@@ -3,6 +3,7 @@ import Dispatcher from '../dispatcher'
 import {CSRFToken} from '../constants/app'
 
 export default {
+  // actions/messages.jsに書いたコメントを参考にこちらも直す
   loadUser() {
     return new Promise((resolve, reject) => {
       request

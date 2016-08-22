@@ -5,7 +5,7 @@ import MessagesAction from '../actions/messages'
 
 export default class CardRouter extends BaseRouter {
   register() {
-    this.route('/', this.decorateApp, this.loadMessage(2))
+    this.route('/', this.decorateApp, this.loadMessage(2)) // この2が何か説明する
   }
 
   decorateApp(ctx, next) {

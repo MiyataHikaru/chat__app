@@ -27,6 +27,7 @@ class ReplyBox extends React.Component {
     }
   }
   handleKeyDown(e) {
+    // keyCode === 13が何のことなのかわからないからコメントで説明する
     if (e.keyCode === 13) {
       MessagesAction.sendMessage(MessagesStore.getOpenChatUserID(), this.state.value)
       MessagesAction.loadMessage(MessagesStore.getOpenChatUserID())
@@ -42,6 +43,9 @@ class ReplyBox extends React.Component {
     })
   }
   render() {
+    // const {value} = this.state
+    // 上記の様にvalueを定義して、
+    // 以下のthis.state.valueはvalueに置き換え
     return (
       <div className='reply-box'>
         <input

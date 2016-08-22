@@ -3,7 +3,7 @@ import _ from 'lodash'
 import classNames from 'classnames'
 import Utils from '../../utils'
 import MessagesStore from '../../stores/messages'
-import UserStore from '../../stores/user'
+import UserStore from '../../stores/user' // 使ってない
 import MessagesAction from '../../actions/messages'
 
 class UserList extends React.Component {
@@ -33,7 +33,7 @@ class UserList extends React.Component {
       openChatID: MessagesStore.getOpenChatUserID(),
       messageList: messageList,
     }
-  }
+  } // この辺改行する
   componentWillMount() {
     MessagesStore.onChange(this.onStoreChange.bind(this))
   }
@@ -50,6 +50,7 @@ class UserList extends React.Component {
   // loadMessage() {
   // }
   render() {
+    // この辺微妙だな。。。要相談
     this.state.messageList.sort((a, b) => {
       if (a.lastMessage.timestamp > b.lastMessage.timestamp) {
         return -1
@@ -109,7 +110,7 @@ class UserList extends React.Component {
           </div>
         </li>
       )
-    }, this)
+    }, this) // ここも改行したほうが見やすい
     return (
       <div className='user-list'>
         <ul className='user-list__list'>

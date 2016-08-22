@@ -29,5 +29,7 @@ UsersStore.dispatchToken = Dispatcher.register(payload => {
 })
 
 
-export default UserStore
+export default UserStore // この上の改行消す
 export default UsersStore
+// UserStoreとUsersStoreが同じファイルにあるのは変
+// というかどっちかで事足りるはず
