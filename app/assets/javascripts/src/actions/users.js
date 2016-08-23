@@ -1,6 +1,5 @@
 import request from 'superagent'
 import Dispatcher from '../dispatcher'
-import {CSRFToken} from '../constants/app'
 
 export default {
   loadUser() {
@@ -8,7 +7,7 @@ export default {
       request
       .get('http://localhost:3000/api/search')
       .end(function(err, res) {
-        if (res.ok) {
+        if (!err && res.ok) {
           const json = JSON.parse(res.text)
           resolve(json)
           Dispatcher.handleServerAction({
@@ -21,12 +20,13 @@ export default {
       })
     })
   },
+
   loadFollowing() {
     return new Promise((resolve, reject) => {
       request
       .get('http://localhost:3000/api/following')
       .end(function(err, res) {
-        if (res.ok) {
+        if (!err && res.ok) {
           const following = JSON.parse(res.text)
           resolve()
           Dispatcher.handleServerAction({
@@ -39,30 +39,13 @@ export default {
       })
     })
   },
-  loadFollowers() {
-    return new Promise((resolve, reject) => {
-      request
-      .get('http://localhost:3000/api/followers')
-      .end(function(err, res) {
-        if (res.ok) {
-          const followers = JSON.parse(res.text)
-          resolve()
-          Dispatcher.handleServerAction({
-            type: 'loadFollowers',
-            followers: followers,
-          })
-        } else {
-          reject(res)
-        }
-      })
-    })
-  },
+
   loadCurrentUser() {
     return new Promise((resolve, reject) => {
       request
       .get('http://localhost:3000/api/current')
       .end(function(err, res) {
-        if (res.ok) {
+        if (!err && res.ok) {
           const current_user = JSON.parse(res.text)
           resolve()
           Dispatcher.handleServerAction({
@@ -74,5 +57,5 @@ export default {
         }
       })
     })
-  }
+  },
 }

@@ -27,7 +27,9 @@ class ReplyBox extends React.Component {
       value: '',
     }
   }
+
   handleKeyDown(e) {
+    // １３はエンターキーを押したとき
     if (e.keyCode === 13) {
       MessagesAction.sendMessage(MessagesStore.getOpenChatUserID(), this.state.value)
       MessagesAction.loadMessage(MessagesStore.getOpenChatUserID())
@@ -36,21 +38,24 @@ class ReplyBox extends React.Component {
       })
     }
   }
+
   updateValue(e) {
     this.setState({
       value: e.target.value,
     })
   }
+
   uploadImage(e) {
-    MessagesAction.uploadImage(MessagesStore.getOpenChatUserID(), e.target.files[0] )
+    MessagesAction.uploadImage(MessagesStore.getOpenChatUserID(), e.target.files[0])
     MessagesAction.loadMessage(MessagesStore.getOpenChatUserID())
   }
-  render() {
 
+  render() {
+    const {value} = this.state
     return (
       <div className='reply-box'>
         <input
-          value={ this.state.value }
+          value={ value }
           onKeyDown={ this.handleKeyDown }
           onChange={ this.updateValue }
           className='reply-box__input'

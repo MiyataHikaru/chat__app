@@ -9,12 +9,13 @@ export default {
       userID: newUserID,
     })
   },
+
   loadMessage(userId) {
     return new Promise((resolve, reject) => {
       request
       .get(`http://localhost:3000/api/messages/${userId}`)
       .end(function(err, res) {
-        if (res.ok) {
+        if (!err && res.ok) {
           const json = JSON.parse(res.text)
           resolve(json)
           Dispatcher.handleServerAction({
@@ -35,7 +36,7 @@ export default {
       .send({content, 'user_id': userId})
       .set('X-CSRF-Token', CSRFToken())
       .end(function(err, res) {
-        if (res.ok) {
+        if (!err && res.ok) {
           const json = JSON.parse(res.text)
           resolve(json)
           Dispatcher.handleServerAction({
@@ -59,7 +60,7 @@ export default {
       .field('user_id', userId)
       .set('X-CSRF-Token', CSRFToken())
       .end(function(err, res) {
-        if (res.ok) {
+        if (!err && res.ok) {
           const json = JSON.parse(res.text)
           resolve(json)
           Dispatcher.handleServerAction({
@@ -73,5 +74,5 @@ export default {
         }
       })
     })
-  }
+  },
 }

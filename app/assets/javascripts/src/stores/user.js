@@ -1,26 +1,34 @@
 import Dispatcher from '../dispatcher'
 import BaseStore from '../base/store'
 
-let json = []
-let following = []
-let followers = []
-let current_user = []
-
 class ChatUserStore extends BaseStore {
   getJson() {
-    return json
+    if (!this.get('users')) this.set('users', [])
+    return this.get('users')
   }
 
-  getCurrentUser() {
-    return current_user
+  setJson(obj) {
+    this.set('users', obj)
   }
 
   getFollowing() {
-    return following
+    if (!this.get('following')) this.set('following', [])
+    // console.log(this._storage)
+    return this.get('following')
   }
 
-  getFollowers() {
-    return followers
+  setFollowing(obj) {
+    this.set('following', obj)
+    console.log(this._storage)
+  }
+
+  getCurrentUser() {
+    if (!this.get('current_user')) this.set('current_user', {})
+    return this.get('current_user')
+  }
+
+  setCurrentUser(obj) {
+    this.set('current_user', obj)
   }
 }
 const UsersStore = new ChatUserStore()
@@ -28,21 +36,22 @@ const UsersStore = new ChatUserStore()
 UsersStore.dispatchToken = Dispatcher.register(payload => {
   const actions = {
     loadUser(payload) {
-      json = payload.action.json
+      const {json} = payload.action
+      UsersStore.setJson(json)
       UsersStore.emitChange()
     },
+
     loadFollowing(payload) {
-      following = payload.action.following
+      const {following} = payload.action
+      UsersStore.setFollowing(following)
       UsersStore.emitChange()
     },
-    loadFollowers(payload) {
-      followers = payload.action.followers
-      UsersStore.emitChange()
-    },
+
     loadCurrentUser(payload) {
-      current_user = payload.action.current_user
+      const {current_user} = payload.action
+      UsersStore.setCurrentUser(current_user)
       UsersStore.emitChange()
-    }
+    },
   }
   actions[payload.action.type] && actions[payload.action.type](payload)
 })

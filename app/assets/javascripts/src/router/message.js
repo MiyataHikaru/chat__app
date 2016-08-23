@@ -3,11 +3,10 @@ import BaseRouter from '../base/router'
 import App from '../app'
 import MessagesAction from '../actions/messages'
 import UsersAction from '../actions/users'
-import MessagesStore from '../stores/messages'
 
 export default class CardRouter extends BaseRouter {
   register() {
-    this.route('/', this.decorateApp, this.loadMessage, this.loadFollowing, this.loadFollowers, this.loadCurrentUser)
+    this.route('/', this.decorateApp, this.loadMessage, this.loadFollowing, this.loadCurrentUser)
   }
 
   decorateApp(ctx, next) {
@@ -16,17 +15,13 @@ export default class CardRouter extends BaseRouter {
   }
 
   loadMessage(ctx, next) {
+    // 仮に１にしてるだけで、一番上にする
     MessagesAction.loadMessage(1)
     next()
   }
 
   loadFollowing(ctx, next) {
     UsersAction.loadFollowing()
-    next()
-  }
-
-  loadFollowers(ctx, next) {
-    UsersAction.loadFollowers()
     next()
   }
 
