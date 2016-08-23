@@ -22,6 +22,7 @@ export default {
   },
 
   loadFollowing() {
+    console.log('hoge3')
     return new Promise((resolve, reject) => {
       request
       .get('http://localhost:3000/api/following')

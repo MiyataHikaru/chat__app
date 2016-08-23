@@ -2,8 +2,7 @@ import Dispatcher from '../dispatcher'
 import BaseStore from '../base/store'
 import UsersStore from './user'
 import _ from 'lodash'
-
-let openChatID = -1
+import MessagesAction from '../actions/messages'
 
 class ChatStore extends BaseStore {
   addChangeListener(callback) {
@@ -15,11 +14,20 @@ class ChatStore extends BaseStore {
   }
 
   getOpenChatUserID() {
-    const users = UsersStore.getFollowing()
-    if (openChatID === -1 && !_.isEmpty(users)) {
-      openChatID = users[0].id
+    return this.get('openChatUserID')
+  }
+
+  setOpenChatUserID() {
+    console.log('ここまでにhoge1まで読み込んでほしい')
+    const FollowingUsers = UsersStore.getFollowing()
+    if (!_.isEmpty(FollowingUsers)) {
+      this.set('openChatUserID', FollowingUsers[0].id)
+      MessagesAction.loadMessage(this._storage.openChatUserID)
     }
-    return openChatID
+  }
+
+  updateOpenChatUserID(obj) {
+    this.set('openChatUserID', obj)
   }
 
   getJson() {
@@ -38,7 +46,7 @@ MessagesStore.dispatchToken = Dispatcher.register(payload => {
   const actions = {
     updateOpenChatID(payload) {
       const {userID} = payload.action
-      openChatID = userID
+      MessagesStore.updateOpenChatUserID(userID)
       MessagesStore.emitChange()
     },
 

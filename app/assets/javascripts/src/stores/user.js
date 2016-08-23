@@ -1,5 +1,6 @@
 import Dispatcher from '../dispatcher'
 import BaseStore from '../base/store'
+import MessagesStore from './messages'
 
 class ChatUserStore extends BaseStore {
   getJson() {
@@ -13,13 +14,12 @@ class ChatUserStore extends BaseStore {
 
   getFollowing() {
     if (!this.get('following')) this.set('following', [])
-    // console.log(this._storage)
     return this.get('following')
   }
 
   setFollowing(obj) {
     this.set('following', obj)
-    console.log(this._storage)
+    MessagesStore.setOpenChatUserID()
   }
 
   getCurrentUser() {
@@ -44,6 +44,7 @@ UsersStore.dispatchToken = Dispatcher.register(payload => {
     loadFollowing(payload) {
       const {following} = payload.action
       UsersStore.setFollowing(following)
+      console.log('hoge2')
       UsersStore.emitChange()
     },
 

@@ -8,6 +8,7 @@ export default {
       type: 'updateOpenChatID',
       userID: newUserID,
     })
+    this.loadMessage(newUserID)
   },
 
   loadMessage(userId) {
