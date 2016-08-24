@@ -91,9 +91,12 @@ class UserList extends React.Component {
               <h4 className='user-list__item__name'>
                 { following.name }
               </h4>
-              <h4 className='last-message'>
-                { last_messages[followingUsersID].content }
-              </h4>
+              {last_messages[followingUsersID]
+                ? <h4 className='last-message'>
+                    { last_messages[followingUsersID].content }
+                  </h4>
+                : null
+              }
             </div>
             <a
               className='fa fa-times destroy-friend'

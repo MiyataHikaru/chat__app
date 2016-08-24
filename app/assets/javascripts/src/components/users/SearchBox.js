@@ -50,7 +50,8 @@ export default class SearchBox extends React.Component {
               className='user-box'
               href={`/follow/${user.id}`}
               data-method='post'
-              >
+              key={user.id}
+            >
               <img src={`user_images/${user.image}`} />
               <div className='user-name'>
                 {user.name}
@@ -66,7 +67,8 @@ export default class SearchBox extends React.Component {
               className='user-box'
               href={`/follow/${user.id}`}
               data-method='post'
-              >
+              key={user.id}
+            >
               <img src='assets/hituji.png' />
               <div className='user-name'>
                 {user.name}
