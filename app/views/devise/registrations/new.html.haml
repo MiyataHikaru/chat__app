@@ -7,11 +7,11 @@
         .field
           = f.label :名前, class: 'field_label'
           %br/
-          = f.text_field :name, class: 'field_box'
+          = f.text_field :name, autofocus: true, class: 'field_box'
         .field
           = f.label :メールアドレス, class: 'field_label'
           %br/
-          = f.email_field :email, autofocus: true, class: 'field_box'
+          = f.email_field :email, class: 'field_box'
         .field
           = f.label :パスワード, class: 'field_label'
           - if @minimum_password_length

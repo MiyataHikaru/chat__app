@@ -15,7 +15,6 @@ export default class CardRouter extends BaseRouter {
 
   loadFollowing(ctx, next) {
     UsersAction.loadFollowing()
-    console.log('hoge4')
     next()
   }
 

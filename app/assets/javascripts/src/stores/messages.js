@@ -18,7 +18,6 @@ class ChatStore extends BaseStore {
   }
 
   setOpenChatUserID() {
-    console.log('ここまでにhoge1まで読み込んでほしい')
     const FollowingUsers = UsersStore.getFollowing()
     if (!_.isEmpty(FollowingUsers)) {
       this.set('openChatUserID', FollowingUsers[0].id)
@@ -28,6 +27,7 @@ class ChatStore extends BaseStore {
 
   updateOpenChatUserID(obj) {
     this.set('openChatUserID', obj)
+    MessagesAction.loadMessage(this._storage.openChatUserID)
   }
 
   getJson() {

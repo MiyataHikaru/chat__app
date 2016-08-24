@@ -87,6 +87,8 @@ class UserList extends React.Component {
                 { following.name }
               </h4>
             </div>
+            <div className='last-message'>
+            </div>
             <a
               className='fa fa-times destroy-friend'
               href={`/unfollow/${following.id}`}

@@ -34,8 +34,9 @@ class MessagesBox extends React.Component {
     this.setState(this.getJsonFromStore())
   }
   render() {
-    const currentUserID = this.state.current_user.id
-    const messages = this.state.messages.map((message) => {
+    const {messages, current_user} = this.state
+    const currentUserID = current_user.id
+    const ChatMessages = messages.map((message) => {
       const messageClasses = classNames({
         'message-box__item': true,
         'message-box__item--from-current': message.from === currentUserID,
@@ -69,7 +70,7 @@ class MessagesBox extends React.Component {
     return (
         <div className='message-box'>
           <ul className='message-box__list'>
-            { messages }
+            { ChatMessages }
           </ul>
           <ReplyBox />,
         </div>
