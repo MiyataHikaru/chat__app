@@ -18,6 +18,7 @@ class UserList extends React.Component {
   getFollowingFromStore() {
     return {
       followingUsers: UsersStore.getFollowing(),
+      last_messages: UsersStore.getLastMessages(),
       openChatId: MessagesStore.getOpenChatUserID(),
     }
   }
@@ -41,8 +42,9 @@ class UserList extends React.Component {
   }
 
   render() {
-    const {followingUsers, openChatId} = this.state
+    const {followingUsers, last_messages, openChatId} = this.state
     const followings = followingUsers.map((following) => {
+      const followingUsersID = following.id
       const itemClasses = classNames({
         'user-list__item': true,
         'clear': true,
@@ -63,6 +65,9 @@ class UserList extends React.Component {
               <h4 className='user-list__item__name'>
                 { following.name }
               </h4>
+              <h5 className='last-message'>
+                { last_messages[followingUsersID].content }
+              </h5>
             </div>
             <a
               className='fa fa-times destroy-friend'
@@ -86,8 +91,9 @@ class UserList extends React.Component {
               <h4 className='user-list__item__name'>
                 { following.name }
               </h4>
-            </div>
-            <div className='last-message'>
+              <h4 className='last-message'>
+                { last_messages[followingUsersID].content }
+              </h4>
             </div>
             <a
               className='fa fa-times destroy-friend'

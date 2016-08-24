@@ -6,12 +6,14 @@ class Api::UsersController < ApplicationController
 
   def following
     @users = current_user.following
-    render json: @users
-  end
-
-  def followers
-    @users = current_user.followers
-    render json: @users
+    last_messages = {}
+    @users.each do |user|
+      last_messages[user.id] = current_user.last_message(user)
+    end
+    render json: {
+      users: @users,
+      last_messages: last_messages,
+    }
   end
 
   def current

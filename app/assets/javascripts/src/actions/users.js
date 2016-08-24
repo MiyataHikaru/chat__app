@@ -27,11 +27,13 @@ export default {
       .get('http://localhost:3000/api/following')
       .end(function(err, res) {
         if (!err && res.ok) {
-          const following = JSON.parse(res.text)
+          const following = JSON.parse(res.text).users
+          const last_messages = JSON.parse(res.text).last_messages
           resolve()
           Dispatcher.handleServerAction({
             type: 'loadFollowing',
             following: following,
+            last_messages: last_messages,
           })
         } else {
           reject(res)

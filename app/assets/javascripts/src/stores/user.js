@@ -19,7 +19,16 @@ class ChatUserStore extends BaseStore {
 
   setFollowing(obj) {
     this.set('following', obj)
-    MessagesStore.setOpenChatUserID()
+    MessagesStore.setFirstOpenChatUserID()
+  }
+
+  getLastMessages() {
+    if (!this.get('last_messages')) this.set('last_messages', [])
+    return this.get('last_messages')
+  }
+
+  setLastMessages(obj) {
+    this.set('last_messages', obj)
   }
 
   getCurrentUser() {
@@ -42,9 +51,9 @@ UsersStore.dispatchToken = Dispatcher.register(payload => {
     },
 
     loadFollowing(payload) {
-      const {following} = payload.action
+      const {following, last_messages} = payload.action
       UsersStore.setFollowing(following)
-      console.log('hoge2')
+      UsersStore.setLastMessages(last_messages)
       UsersStore.emitChange()
     },
 

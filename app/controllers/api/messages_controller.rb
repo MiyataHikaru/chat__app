@@ -19,5 +19,4 @@ class Api::MessagesController < ApplicationController
     @from_messages = User.find(id).messages.where(user_id: current_user.id)
     render json: (@messages.concat(@from_messages).sort_by &:created_at)
   end
-
 end

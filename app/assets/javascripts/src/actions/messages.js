@@ -64,7 +64,7 @@ export default {
           const json = JSON.parse(res.text)
           resolve(json)
           Dispatcher.handleServerAction({
-            trpe: 'uploadImage',
+            type: 'uploadImage',
             file,
             userId,
             json,

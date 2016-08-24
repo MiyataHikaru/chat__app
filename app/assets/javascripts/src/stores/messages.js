@@ -17,11 +17,13 @@ class ChatStore extends BaseStore {
     return this.get('openChatUserID')
   }
 
-  setOpenChatUserID() {
-    const FollowingUsers = UsersStore.getFollowing()
-    if (!_.isEmpty(FollowingUsers)) {
-      this.set('openChatUserID', FollowingUsers[0].id)
-      MessagesAction.loadMessage(this._storage.openChatUserID)
+  setFirstOpenChatUserID() {
+    if (!this.get('openChatUserID')) {
+      const FollowingUsers = UsersStore.getFollowing()
+      if (!_.isEmpty(FollowingUsers)) {
+        this.set('openChatUserID', FollowingUsers[0].id)
+        MessagesAction.loadMessage(this._storage.openChatUserID)
+      }
     }
   }
 
@@ -37,6 +39,15 @@ class ChatStore extends BaseStore {
 
   setJson(obj) {
     this.set('messages', obj)
+  }
+
+  getFollowingMessages() {
+    if (!this.get('FollowingMessages')) this.set('FollowingMessages', [])
+    return this.get('FollowingMessages')
+  }
+
+  setFollowingMessages(obj) {
+    this.set('FollowingMessages', obj)
   }
 }
 
@@ -59,7 +70,6 @@ MessagesStore.dispatchToken = Dispatcher.register(payload => {
     sendMessage(payload) {
       MessagesStore.emitChange()
     },
-
   }
   actions[payload.action.type] && actions[payload.action.type](payload)
 })

@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user ,only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+  before_action :correct_user, only: [:edit, :update, :destroy]
 
   def show
   end
@@ -44,4 +45,12 @@ end
 
 def user_params
   params.require(:user).permit(:name, :email, :password, :content)
+end
+
+def correct_user
+  # binding.pry
+  user = User.find(params[:id])
+  unless current_user.id == user.id
+    redirect_to root_path, alert: 'それはダメ！！'
+  end
 end
