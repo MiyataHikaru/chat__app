@@ -39,12 +39,6 @@ export default {
         if (!err && res.ok) {
           const json = JSON.parse(res.text)
           resolve(json)
-          Dispatcher.handleServerAction({
-            type: 'sendMessage',
-            content,
-            userId,
-            json,
-          })
         } else {
           reject(res)
         }

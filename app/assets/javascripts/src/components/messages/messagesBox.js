@@ -1,4 +1,5 @@
 import React from 'react'
+import _ from 'lodash'
 import classNames from 'classNames'
 import MessagesStore from '../../stores/messages'
 import ReplyBox from '../../components/messages/replyBox'
@@ -15,62 +16,55 @@ class MessagesBox extends React.Component {
 
   getJsonFromStore() {
     return {
-      current_user: UsersStore.getCurrentUser(),
+      currentUser: UsersStore.getCurrentUser(),
       messages: MessagesStore.getJson(),
     }
   }
-// あまり理解できていない。
-  componentWillMount() {
+
+  componentDidMount() {
     MessagesStore.onChange(this.onStoreChange.bind(this))
     UsersStore.onChange(this.onStoreChange.bind(this))
   }
-// あまり理解できていない。
+
   componentWillUnmount() {
     MessagesStore.offChange(this.onStoreChange.bind(this))
-    UsersStore.onChange(this.onStoreChange.bind(this))
+    UsersStore.offChange(this.onStoreChange.bind(this))
   }
 
   onStoreChange() {
     this.setState(this.getJsonFromStore())
   }
+
   render() {
-    const {messages, current_user} = this.state
-    const currentUserID = current_user.id
+    const {messages, currentUser} = this.state
+    const currentUserID = currentUser.id
     const ChatMessages = messages.map((message) => {
       const messageClasses = classNames({
         'message-box__item': true,
         'message-box__item--from-current': message.from === currentUserID,
         'clear': true,
       })
-      if (message.file) {
-        return (
-          <li
-            key={ message.id }
-            className={ messageClasses }
-          >
-            <div className='message-box__item__image'>
-              <img src={`message_images/${message.file}`} />
-            </div>
-          </li>
-        )
-      } else {
-        return (
-          <li
-            key={ message.id }
-            className={ messageClasses }
-          >
-            <div className='message-box__item__contents'>
-              { message.content }
-            </div>
-          </li>
-        )
-      }
+      const isImage = !_.isEmpty(messages.file)
+
+      return (
+        <li
+          key={message.id}
+          className={messageClasses}
+        >
+          <div className={`message-box__item__${isImage ? 'image' : 'contents'}`} >
+            {isImage
+              ? <img src={`message_images/${message.file}`} />
+              : message.content
+            }
+          </div>
+        </li>
+      )
     })
 
     return (
         <div className='message-box'>
           <ul className='message-box__list'>
-            { ChatMessages }
+            {ChatMessages}
           </ul>
           <ReplyBox />,
         </div>

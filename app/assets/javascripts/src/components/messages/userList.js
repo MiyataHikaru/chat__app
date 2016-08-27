@@ -12,29 +12,29 @@ class UserList extends React.Component {
   }
 
   get initialState() {
-    return this.getFollowingFromStore()
+    return this.getStateFromStore()
   }
 
-  getFollowingFromStore() {
+  getStateFromStore() {
     return {
       followingUsers: UsersStore.getFollowing(),
-      last_messages: UsersStore.getLastMessages(),
+      lastMessages: UsersStore.getLastMessages(),
       openChatId: MessagesStore.getOpenChatUserID(),
     }
   }
 
-  componentWillMount() {
+  componentDidMount() {
     MessagesStore.onChange(this.onStoreChange.bind(this))
     UsersStore.onChange(this.onStoreChange.bind(this))
   }
 
   componentWillUnmount() {
     MessagesStore.offChange(this.onStoreChange.bind(this))
-    UsersStore.onChange(this.onStoreChange.bind(this))
+    UsersStore.offChange(this.onStoreChange.bind(this))
   }
 
   onStoreChange() {
-    this.setState(this.getFollowingFromStore())
+    this.setState(this.getStateFromStore())
   }
 
   changeOpenChat(id) {
@@ -42,71 +42,52 @@ class UserList extends React.Component {
   }
 
   render() {
-    const {followingUsers, last_messages, openChatId} = this.state
+    const {
+      followingUsers,
+      lastMessages,
+      openChatId,
+    } = this.state
     const followings = followingUsers.map((following) => {
-      const followingUsersID = following.id
+      const {id, image, name} = following
+      const lastMessage = lastMessages[id]
       const itemClasses = classNames({
         'user-list__item': true,
         'clear': true,
-        'user-list__item--active': openChatId === following.id,
+        'user-list__item--active': openChatId === id,
       })
-      if (following.image) {
-        return (
-          <li
-            onClick={ this.changeOpenChat.bind(this, following.id) }
-            className={ itemClasses }
-            key={ following.id }
-            deta-remote='true'
-          >
-            <div className='user-list__item__picture'>
-              <img src={`user_images/${following.image}`} />
-            </div>
-            <div className='user-list__item__details'>
-              <h4 className='user-list__item__name'>
-                { following.name }
-              </h4>
-              <h5 className='last-message'>
-                { last_messages[followingUsersID].content }
-              </h5>
-            </div>
-            <a
-              className='fa fa-times destroy-friend'
-              href={`/unfollow/${following.id}`}
-              data-method='delete'
-              >
-            </a>
-          </li>
-        )
-      } else {
-        return (
-          <li
-            onClick={ this.changeOpenChat.bind(this, following.id) }
-            className={ itemClasses }
-            key={ following.id }
-          >
-            <div className='user-list__item__picture'>
-              <img src='assets/hituji.png' />
-            </div>
-            <div className='user-list__item__details'>
-              <h4 className='user-list__item__name'>
-                { following.name }
-              </h4>
-              {last_messages[followingUsersID]
-                ? <h4 className='last-message'>
-                    { last_messages[followingUsersID].content }
-                  </h4>
-                : null
-              }
-            </div>
-            <a
-              className='fa fa-times destroy-friend'
-              href={`/unfollow/${following.id}`}
-              data-method='delete'
-              >
-            </a>
-          </li>
-        )
-      }
+      const imagePath = image
+        ? `user_images/${image}`
+        : 'assets/hituji.png'
+
+      return (
+        <li
+          onClick={this.changeOpenChat.bind(this, id)}
+          className={itemClasses}
+          key={id}
+          deta-remote='true'
+        >
+          <div className='user-list__item__picture'>
+            <img src={imagePath} />
+          </div>
+          <div className='user-list__item__details'>
+            <h4 className='user-list__item__name'>
+              {name}
+            </h4>
+            {lastMessage
+              ? <h5 className='last-message'>
+                  {lastMessage.content}
+                </h5>
+              : null
+            }
+          </div>
+          <a
+            className='fa fa-times destroy-friend'
+            href={`/unfollow/${id}`}
+            data-method='delete'
+            >
+          </a>
+        </li>
+      )
     }, this)
 
     return (

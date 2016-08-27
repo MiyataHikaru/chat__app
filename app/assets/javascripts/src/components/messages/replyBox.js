@@ -30,9 +30,10 @@ class ReplyBox extends React.Component {
   }
 
   handleKeyDown(e) {
+    const {value} = this.state
     // １３はエンターキーを押したとき
-    if (e.keyCode === 13) {
-      MessagesAction.sendMessage(MessagesStore.getOpenChatUserID(), this.state.value)
+    if (e.keyCode === 13 && value !== '') {
+      MessagesAction.sendMessage(MessagesStore.getOpenChatUserID(), value)
       MessagesAction.loadMessage(MessagesStore.getOpenChatUserID())
       UsersAction.loadFollowing()
       this.setState({

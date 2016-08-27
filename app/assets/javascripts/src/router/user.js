@@ -1,6 +1,6 @@
 import ReactDecorator from '../base/react_decorator'
 import BaseRouter from '../base/router'
-import SearchBox from '../components/users/SearchBox'
+import SearchBox from '../components/users/searchBox'
 import UsersAction from '../actions/users'
 
 export default class SearchRouter extends BaseRouter {

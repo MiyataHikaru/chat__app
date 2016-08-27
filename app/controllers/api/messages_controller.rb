@@ -10,7 +10,7 @@ class Api::MessagesController < ApplicationController
       @message.file = file_name
     end
     @message.save
-    redirect_to root_path
+    render_success
   end
 
   def index

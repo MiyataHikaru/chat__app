@@ -17,4 +17,13 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:sign_up) << :name
   end
   protect_from_forgery with: :exception
+
+  # API
+  def render_success(message = '')
+    @_success = true
+    render(
+      json: { success: true, message: message },
+      status: 200,
+    )
+  end
 end
